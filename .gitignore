@@ -8,3 +8,6 @@ wheels/
 
 # Virtual environments
 .venv
+
+# Lab 2 data
+creditcard.csv
