@@ -1,0 +1,223 @@
+# Лог першого повного запуску команди навчання (перевірки + 7 запусків).
+# Він завершився NameError на записі selection.json уже після навчання всіх семи запусків і збереження їхніх журналів;
+# після виправлення імпорту команду повторено з --skip-existing (лог нижче, після роздільника).
+
+
+Пристрій: cpu (cpu (Intel64 Family 6 Model 186 Stepping 2, GenuineIntel, 8 threads)), дані: C:\Users\TkachBS\Personal\Deep Learning\datasets\intel
+
+== Поділ: кількість / сума числових імен ==
+| Клас | train | validation | test |
+| buildings | 200 / 1 996 761 | 218 / 4 837 323 | 219 / 4 837 559 |
+| forest | 200 / 2 032 625 | 237 / 5 276 962 | 237 / 5 291 326 |
+| glacier | 200 / 2 183 923 | 276 / 6 135 652 | 277 / 6 157 250 |
+| mountain | 200 / 1 950 345 | 262 / 5 789 535 | 263 / 5 849 765 |
+| sea | 200 / 1 987 613 | 255 / 5 655 068 | 255 / 5 668 011 |
+| street | 200 / 1 841 817 | 250 / 5 541 845 | 251 / 5 547 533 |
+| Разом | 1200 / 11 993 084 | 1498 / 33 236 385 | 1502 / 33 351 444 |
+Усі 18 клітинок збігаються з контрольною таблицею: так; перетини частин: {'train&validation': 0, 'train&test': 0, 'validation&test': 0}
+Розміри зображень seg_train+seg_test: 32 різних; не 150x150: 55
+Downloading: "https://download.pytorch.org/models/resnet18-f37072fd.pth" to C:\Users\TkachBS/.cache\torch\hub\checkpoints\resnet18-f37072fd.pth
+
+== Початкова втрата L0 (зерно 1, перший пакет, set_train_mode, no_grad) ==
+scratch  L0=2.1344  ln6=1.7918  L0-ln6=+0.3427  std логітів=0.504  max|логіт|=1.937  середня max p=0.286
+frozen   L0=2.2155  ln6=1.7918  L0-ln6=+0.4238  std логітів=0.671  max|логіт|=2.283  середня max p=0.326
+
+== Параметри та групи оптимізатора (сума numel) ==
+scratch  усього=11 179 590 навчаються=11 179 590 групи: 11 179 590 @ lr=0.003; requires_grad=False в оптимізаторі: 0; збіг: так
+frozen   усього=11 179 590 навчаються=3 078 групи: 3 078 @ lr=0.003; requires_grad=False в оптимізаторі: 0; збіг: так
+unfreeze усього=11 179 590 навчаються=8 396 806 групи: 3 078 @ lr=0.003; 8 393 728 @ lr=0.0003; requires_grad=False в оптимізаторі: 0; збіг: так
+
+== Що змінюється за 5 кроків, frozen, set_train_mode ==
+| Режим | Модуль | Параметри змінилися | Ковзні статистики BN змінилися | Збігається з очікуваним |
+| frozen | conv1 | ні | немає BN | так |
+| frozen | bn1 | ні | ні | так |
+| frozen | layer1 | ні | ні | так |
+| frozen | layer2 | ні | ні | так |
+| frozen | layer3 | ні | ні | так |
+| frozen | layer4 | ні | ні | так |
+| frozen | fc | так | немає BN | так |
+
+== Що змінюється за 5 кроків, unfreeze, set_train_mode ==
+| Режим | Модуль | Параметри змінилися | Ковзні статистики BN змінилися | Збігається з очікуваним |
+| unfreeze | conv1 | ні | немає BN | так |
+| unfreeze | bn1 | ні | ні | так |
+| unfreeze | layer1 | ні | ні | так |
+| unfreeze | layer2 | ні | ні | так |
+| unfreeze | layer3 | ні | ні | так |
+| unfreeze | layer4 | так | так | так |
+| unfreeze | fc | так | немає BN | так |
+
+== Дослід із помилкою: frozen, model.train() замість set_train_mode ==
+| Режим | Модуль | Параметри змінилися | Ковзні статистики BN змінилися | Збігається з очікуваним |
+| frozen | conv1 | ні | немає BN | так |
+| frozen | bn1 | ні | так | ні |
+| frozen | layer1 | ні | так | ні |
+| frozen | layer2 | ні | так | ні |
+| frozen | layer3 | ні | так | ні |
+| frozen | layer4 | ні | так | ні |
+| frozen | fc | так | немає BN | так |
+max |Δ layer1.0.bn1.running_mean| = 0.088582
+max |Δ layer1.0.bn1.running_var| = 0.148397
+max |Δ layer1.0.bn1.num_batches_tracked| = 5
+
+Усі перевірки пунктів 1–2 збіглися з очікуваними; переходжу до семи запусків.
+
+[scratch_seed1]
+  scratch_seed1 епоха 1: втрата train 1.7168, macro-F1 val 0.2819 (72 с)
+  scratch_seed1 епоха 2: втрата train 1.2440, macro-F1 val 0.4492 (71 с)
+  scratch_seed1 епоха 3: втрата train 1.1667, macro-F1 val 0.5221 (69 с)
+  scratch_seed1 епоха 4: втрата train 1.1268, macro-F1 val 0.5504 (61 с)
+  scratch_seed1 епоха 5: втрата train 1.1053, macro-F1 val 0.4569 (62 с)
+  scratch_seed1 епоха 6: втрата train 1.1068, macro-F1 val 0.4681 (70 с)
+  scratch_seed1 епоха 7: втрата train 1.0406, macro-F1 val 0.5729 (64 с)
+  scratch_seed1 епоха 8: втрата train 0.9869, macro-F1 val 0.5955 (62 с)
+  час навчання 530 с
+
+[frozen_seed1]
+  frozen_seed1 епоха 1: втрата train 0.6453, macro-F1 val 0.8799 (40 с)
+  frozen_seed1 епоха 2: втрата train 0.2840, macro-F1 val 0.8793 (37 с)
+  frozen_seed1 епоха 3: втрата train 0.2521, macro-F1 val 0.8870 (40 с)
+  frozen_seed1 епоха 4: втрата train 0.2226, macro-F1 val 0.8664 (40 с)
+  frozen_seed1 епоха 5: втрата train 0.2138, macro-F1 val 0.8854 (38 с)
+  frozen_seed1 епоха 6: втрата train 0.2013, macro-F1 val 0.8846 (38 с)
+  frozen_seed1 епоха 7: втрата train 0.1754, macro-F1 val 0.8837 (32 с)
+  frozen_seed1 епоха 8: втрата train 0.1759, macro-F1 val 0.8829 (32 с)
+  час навчання 297 с
+
+[frozen_seed2]
+  frozen_seed2 епоха 1: втрата train 0.6463, macro-F1 val 0.8752 (32 с)
+  frozen_seed2 епоха 2: втрата train 0.2792, macro-F1 val 0.8762 (33 с)
+  frozen_seed2 епоха 3: втрата train 0.2395, macro-F1 val 0.8740 (34 с)
+  frozen_seed2 епоха 4: втрата train 0.2156, macro-F1 val 0.8911 (33 с)
+  frozen_seed2 епоха 5: втрата train 0.2017, macro-F1 val 0.8865 (31 с)
+  frozen_seed2 епоха 6: втрата train 0.1922, macro-F1 val 0.8770 (32 с)
+  frozen_seed2 епоха 7: втрата train 0.1982, macro-F1 val 0.8802 (34 с)
+  frozen_seed2 епоха 8: втрата train 0.1848, macro-F1 val 0.8814 (38 с)
+  час навчання 268 с
+
+[frozen_seed3]
+  frozen_seed3 епоха 1: втрата train 0.6483, macro-F1 val 0.8813 (42 с)
+  frozen_seed3 епоха 2: втрата train 0.2922, macro-F1 val 0.8850 (41 с)
+  frozen_seed3 епоха 3: втрата train 0.2326, macro-F1 val 0.8754 (41 с)
+  frozen_seed3 епоха 4: втрата train 0.2248, macro-F1 val 0.8776 (43 с)
+  frozen_seed3 епоха 5: втрата train 0.2041, macro-F1 val 0.8863 (33 с)
+  frozen_seed3 епоха 6: втрата train 0.1892, macro-F1 val 0.8396 (32 с)
+  frozen_seed3 епоха 7: втрата train 0.1944, macro-F1 val 0.8849 (32 с)
+  frozen_seed3 епоха 8: втрата train 0.1788, macro-F1 val 0.8864 (32 с)
+  час навчання 296 с
+
+[unfreeze_seed1]
+  unfreeze_seed1 епоха 1: втрата train 0.5553, macro-F1 val 0.8932 (39 с)
+  unfreeze_seed1 епоха 2: втрата train 0.1698, macro-F1 val 0.9001 (39 с)
+  unfreeze_seed1 епоха 3: втрата train 0.1377, macro-F1 val 0.8889 (38 с)
+  unfreeze_seed1 епоха 4: втрата train 0.1353, macro-F1 val 0.8754 (40 с)
+  unfreeze_seed1 епоха 5: втрата train 0.1340, macro-F1 val 0.8938 (40 с)
+  unfreeze_seed1 епоха 6: втрата train 0.0672, macro-F1 val 0.8836 (40 с)
+  unfreeze_seed1 епоха 7: втрата train 0.0912, macro-F1 val 0.8988 (45 с)
+  unfreeze_seed1 епоха 8: втрата train 0.0908, macro-F1 val 0.8735 (46 с)
+  час навчання 327 с
+
+[unfreeze_seed2]
+  unfreeze_seed2 епоха 1: втрата train 0.5299, macro-F1 val 0.8792 (39 с)
+  unfreeze_seed2 епоха 2: втрата train 0.1862, macro-F1 val 0.9070 (41 с)
+  unfreeze_seed2 епоха 3: втрата train 0.1502, macro-F1 val 0.8971 (50 с)
+  unfreeze_seed2 епоха 4: втрата train 0.1060, macro-F1 val 0.8866 (47 с)
+  unfreeze_seed2 епоха 5: втрата train 0.1029, macro-F1 val 0.8880 (47 с)
+  unfreeze_seed2 епоха 6: втрата train 0.0958, macro-F1 val 0.8755 (52 с)
+  unfreeze_seed2 епоха 7: втрата train 0.0670, macro-F1 val 0.8894 (47 с)
+  unfreeze_seed2 епоха 8: втрата train 0.0551, macro-F1 val 0.8880 (42 с)
+  час навчання 364 с
+
+[unfreeze_seed3]
+  unfreeze_seed3 епоха 1: втрата train 0.5108, macro-F1 val 0.7928 (41 с)
+  unfreeze_seed3 епоха 2: втрата train 0.2126, macro-F1 val 0.8711 (41 с)
+  unfreeze_seed3 епоха 3: втрата train 0.1209, macro-F1 val 0.8974 (40 с)
+  unfreeze_seed3 епоха 4: втрата train 0.1201, macro-F1 val 0.8874 (40 с)
+  unfreeze_seed3 епоха 5: втрата train 0.0836, macro-F1 val 0.9040 (41 с)
+  unfreeze_seed3 епоха 6: втрата train 0.0647, macro-F1 val 0.8841 (42 с)
+  unfreeze_seed3 епоха 7: втрата train 0.1123, macro-F1 val 0.8768 (42 с)
+  unfreeze_seed3 епоха 8: втрата train 0.1083, macro-F1 val 0.8469 (41 с)
+  час навчання 330 с
+Traceback (most recent call last):
+  File "C:\Users\TkachBS\Personal\Deep Learning\dl-labs\lab3\train.py", line 299, in <module>
+    main()
+  File "C:\Users\TkachBS\Personal\Deep Learning\dl-labs\lab3\train.py", line 293, in main
+    (RUNS_DIR / "selection.json").write_text(json.dumps(sel, indent=2, ensure_ascii=False), encoding="utf-8")
+     ^^^^^^^^
+NameError: name 'RUNS_DIR' is not defined
+
+=================== повторний запуск: uv run python train.py --data ... --skip-existing ===================
+Пристрій: cpu (cpu (Intel64 Family 6 Model 186 Stepping 2, GenuineIntel, 8 threads)), дані: C:\Users\TkachBS\Personal\Deep Learning\datasets\intel
+
+== Поділ: кількість / сума числових імен ==
+| Клас | train | validation | test |
+| buildings | 200 / 1 996 761 | 218 / 4 837 323 | 219 / 4 837 559 |
+| forest | 200 / 2 032 625 | 237 / 5 276 962 | 237 / 5 291 326 |
+| glacier | 200 / 2 183 923 | 276 / 6 135 652 | 277 / 6 157 250 |
+| mountain | 200 / 1 950 345 | 262 / 5 789 535 | 263 / 5 849 765 |
+| sea | 200 / 1 987 613 | 255 / 5 655 068 | 255 / 5 668 011 |
+| street | 200 / 1 841 817 | 250 / 5 541 845 | 251 / 5 547 533 |
+| Разом | 1200 / 11 993 084 | 1498 / 33 236 385 | 1502 / 33 351 444 |
+Усі 18 клітинок збігаються з контрольною таблицею: так; перетини частин: {'train&validation': 0, 'train&test': 0, 'validation&test': 0}
+Розміри зображень seg_train+seg_test: 32 різних; не 150x150: 55
+
+== Початкова втрата L0 (зерно 1, перший пакет, set_train_mode, no_grad) ==
+scratch  L0=2.1344  ln6=1.7918  L0-ln6=+0.3427  std логітів=0.504  max|логіт|=1.937  середня max p=0.286
+frozen   L0=2.2155  ln6=1.7918  L0-ln6=+0.4238  std логітів=0.671  max|логіт|=2.283  середня max p=0.326
+
+== Параметри та групи оптимізатора (сума numel) ==
+scratch  усього=11 179 590 навчаються=11 179 590 групи: 11 179 590 @ lr=0.003; requires_grad=False в оптимізаторі: 0; збіг: так
+frozen   усього=11 179 590 навчаються=3 078 групи: 3 078 @ lr=0.003; requires_grad=False в оптимізаторі: 0; збіг: так
+unfreeze усього=11 179 590 навчаються=8 396 806 групи: 3 078 @ lr=0.003; 8 393 728 @ lr=0.0003; requires_grad=False в оптимізаторі: 0; збіг: так
+
+== Що змінюється за 5 кроків, frozen, set_train_mode ==
+| Режим | Модуль | Параметри змінилися | Ковзні статистики BN змінилися | Збігається з очікуваним |
+| frozen | conv1 | ні | немає BN | так |
+| frozen | bn1 | ні | ні | так |
+| frozen | layer1 | ні | ні | так |
+| frozen | layer2 | ні | ні | так |
+| frozen | layer3 | ні | ні | так |
+| frozen | layer4 | ні | ні | так |
+| frozen | fc | так | немає BN | так |
+
+== Що змінюється за 5 кроків, unfreeze, set_train_mode ==
+| Режим | Модуль | Параметри змінилися | Ковзні статистики BN змінилися | Збігається з очікуваним |
+| unfreeze | conv1 | ні | немає BN | так |
+| unfreeze | bn1 | ні | ні | так |
+| unfreeze | layer1 | ні | ні | так |
+| unfreeze | layer2 | ні | ні | так |
+| unfreeze | layer3 | ні | ні | так |
+| unfreeze | layer4 | так | так | так |
+| unfreeze | fc | так | немає BN | так |
+
+== Дослід із помилкою: frozen, model.train() замість set_train_mode ==
+| Режим | Модуль | Параметри змінилися | Ковзні статистики BN змінилися | Збігається з очікуваним |
+| frozen | conv1 | ні | немає BN | так |
+| frozen | bn1 | ні | так | ні |
+| frozen | layer1 | ні | так | ні |
+| frozen | layer2 | ні | так | ні |
+| frozen | layer3 | ні | так | ні |
+| frozen | layer4 | ні | так | ні |
+| frozen | fc | так | немає BN | так |
+max |Δ layer1.0.bn1.running_mean| = 0.088582
+max |Δ layer1.0.bn1.running_var| = 0.148397
+max |Δ layer1.0.bn1.num_batches_tracked| = 5
+
+Усі перевірки пунктів 1–2 збіглися з очікуваними; переходжу до семи запусків.
+
+[scratch_seed1] уже є, пропускаю
+
+[frozen_seed1] уже є, пропускаю
+
+[frozen_seed2] уже є, пропускаю
+
+[frozen_seed3] уже є, пропускаю
+
+[unfreeze_seed1] уже є, пропускаю
+
+[unfreeze_seed2] уже є, пропускаю
+
+[unfreeze_seed3] уже є, пропускаю
+
+Середні macro-F1 validation: {'scratch': 0.5955374872414576, 'frozen': 0.8835646092852786, 'unfreeze': 0.8694283797608287}
+Вибрано frozen_seed3 (macro-F1 val 0.8864) → lab3_model.pt

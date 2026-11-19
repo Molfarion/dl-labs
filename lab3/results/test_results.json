@@ -1,0 +1,283 @@
+{
+  "effects": {
+    "F": {
+      "scratch_seed1": 0.5955374872414576,
+      "frozen_seed1": 0.8829264959685504,
+      "frozen_seed2": 0.8813500703928338,
+      "frozen_seed3": 0.8864172614944515,
+      "unfreeze_seed1": 0.8734573437277261,
+      "unfreeze_seed2": 0.8879688061178448,
+      "unfreeze_seed3": 0.8468589894369151
+    },
+    "Fbar": {
+      "frozen": 0.8835646092852786,
+      "unfreeze": 0.8694283797608287
+    },
+    "range": {
+      "frozen": 0.005067191101617796,
+      "unfreeze": 0.04110981668092972
+    },
+    "R": 0.04110981668092972,
+    "delta_pre": 0.28802712204382097,
+    "delta_unf": -0.014136229524449928,
+    "delta_total": 0.27389089251937104,
+    "delta_pre_exceeds_R": true,
+    "delta_unf_exceeds_R": false
+  },
+  "selection": {
+    "regime": "frozen",
+    "seed": 3,
+    "val_macro_f1": 0.8864172614944515,
+    "regime_means": {
+      "scratch": 0.5955374872414576,
+      "frozen": 0.8835646092852786,
+      "unfreeze": 0.8694283797608287
+    },
+    "val_logits_max_abs_diff": 0.0,
+    "val_argmax_agreement": 1.0,
+    "val_macro_f1_cpu": 0.8864172614944515
+  },
+  "test": {
+    "model": "frozen_seed3",
+    "test_macro_f1": 0.8892040654693513,
+    "test_accuracy": 0.8861517976031957,
+    "n": 1502,
+    "accuracy_se": 0.008195626988597764,
+    "val_macro_f1_selected": 0.8864172614944515,
+    "test_minus_val": 0.002786803974899721,
+    "confusion_matrix": [
+      [
+        204,
+        1,
+        1,
+        1,
+        1,
+        11
+      ],
+      [
+        0,
+        236,
+        0,
+        0,
+        0,
+        1
+      ],
+      [
+        1,
+        1,
+        207,
+        63,
+        3,
+        2
+      ],
+      [
+        1,
+        0,
+        33,
+        224,
+        5,
+        0
+      ],
+      [
+        3,
+        1,
+        4,
+        5,
+        242,
+        0
+      ],
+      [
+        31,
+        0,
+        0,
+        1,
+        1,
+        218
+      ]
+    ],
+    "off_diagonal_pairs": [
+      {
+        "true": "glacier",
+        "pred": "mountain",
+        "count": 63
+      },
+      {
+        "true": "mountain",
+        "pred": "glacier",
+        "count": 33
+      },
+      {
+        "true": "street",
+        "pred": "buildings",
+        "count": 31
+      },
+      {
+        "true": "buildings",
+        "pred": "street",
+        "count": 11
+      },
+      {
+        "true": "mountain",
+        "pred": "sea",
+        "count": 5
+      },
+      {
+        "true": "sea",
+        "pred": "mountain",
+        "count": 5
+      },
+      {
+        "true": "sea",
+        "pred": "glacier",
+        "count": 4
+      },
+      {
+        "true": "glacier",
+        "pred": "sea",
+        "count": 3
+      },
+      {
+        "true": "sea",
+        "pred": "buildings",
+        "count": 3
+      },
+      {
+        "true": "glacier",
+        "pred": "street",
+        "count": 2
+      },
+      {
+        "true": "buildings",
+        "pred": "forest",
+        "count": 1
+      },
+      {
+        "true": "buildings",
+        "pred": "glacier",
+        "count": 1
+      },
+      {
+        "true": "buildings",
+        "pred": "mountain",
+        "count": 1
+      },
+      {
+        "true": "buildings",
+        "pred": "sea",
+        "count": 1
+      },
+      {
+        "true": "forest",
+        "pred": "street",
+        "count": 1
+      },
+      {
+        "true": "glacier",
+        "pred": "buildings",
+        "count": 1
+      },
+      {
+        "true": "glacier",
+        "pred": "forest",
+        "count": 1
+      },
+      {
+        "true": "mountain",
+        "pred": "buildings",
+        "count": 1
+      },
+      {
+        "true": "sea",
+        "pred": "forest",
+        "count": 1
+      },
+      {
+        "true": "street",
+        "pred": "mountain",
+        "count": 1
+      },
+      {
+        "true": "street",
+        "pred": "sea",
+        "count": 1
+      }
+    ],
+    "errors": [
+      {
+        "file": "20179.jpg",
+        "true": "glacier",
+        "pred": "mountain",
+        "prob": 0.9198671579360962,
+        "count": 63,
+        "probs": {
+          "buildings": 0.00021303191897459328,
+          "forest": 1.9290933778393082e-05,
+          "glacier": 0.0798434168100357,
+          "mountain": 0.9198671579360962,
+          "sea": 5.148857235326432e-05,
+          "street": 5.539614903682377e-06
+        }
+      },
+      {
+        "file": "20116.jpg",
+        "true": "mountain",
+        "pred": "glacier",
+        "prob": 0.5995799899101257,
+        "count": 33,
+        "probs": {
+          "buildings": 0.0003364464791957289,
+          "forest": 1.2960630556335673e-05,
+          "glacier": 0.5995799899101257,
+          "mountain": 0.39917874336242676,
+          "sea": 0.0006852346705272794,
+          "street": 0.00020662951283156872
+        }
+      },
+      {
+        "file": "20353.jpg",
+        "true": "street",
+        "pred": "buildings",
+        "prob": 0.8639559745788574,
+        "count": 31,
+        "probs": {
+          "buildings": 0.8639559745788574,
+          "forest": 0.0005640732124447823,
+          "glacier": 2.9619457563967444e-05,
+          "mountain": 5.885363407287514e-06,
+          "sea": 1.984808659472037e-05,
+          "street": 0.13542458415031433
+        }
+      },
+      {
+        "file": "20752.jpg",
+        "true": "buildings",
+        "pred": "street",
+        "prob": 0.7497100234031677,
+        "count": 11,
+        "probs": {
+          "buildings": 0.23158922791481018,
+          "forest": 0.01071400661021471,
+          "glacier": 0.0008863653638400137,
+          "mountain": 0.007063533645123243,
+          "sea": 3.6854235077043995e-05,
+          "street": 0.7497100234031677
+        }
+      },
+      {
+        "file": "20304.jpg",
+        "true": "mountain",
+        "pred": "sea",
+        "prob": 0.7210640907287598,
+        "count": 5,
+        "probs": {
+          "buildings": 7.174963684519753e-05,
+          "forest": 1.0817389011208434e-05,
+          "glacier": 0.08074916899204254,
+          "mountain": 0.19797471165657043,
+          "sea": 0.7210640907287598,
+          "street": 0.000129447624203749
+        }
+      }
+    ]
+  }
+}

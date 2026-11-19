@@ -1,0 +1,535 @@
+{
+  "split": {
+    "cells": {
+      "buildings/train": {
+        "got": [
+          200,
+          1996761
+        ],
+        "expected": [
+          200,
+          1996761
+        ],
+        "match": true
+      },
+      "buildings/validation": {
+        "got": [
+          218,
+          4837323
+        ],
+        "expected": [
+          218,
+          4837323
+        ],
+        "match": true
+      },
+      "buildings/test": {
+        "got": [
+          219,
+          4837559
+        ],
+        "expected": [
+          219,
+          4837559
+        ],
+        "match": true
+      },
+      "forest/train": {
+        "got": [
+          200,
+          2032625
+        ],
+        "expected": [
+          200,
+          2032625
+        ],
+        "match": true
+      },
+      "forest/validation": {
+        "got": [
+          237,
+          5276962
+        ],
+        "expected": [
+          237,
+          5276962
+        ],
+        "match": true
+      },
+      "forest/test": {
+        "got": [
+          237,
+          5291326
+        ],
+        "expected": [
+          237,
+          5291326
+        ],
+        "match": true
+      },
+      "glacier/train": {
+        "got": [
+          200,
+          2183923
+        ],
+        "expected": [
+          200,
+          2183923
+        ],
+        "match": true
+      },
+      "glacier/validation": {
+        "got": [
+          276,
+          6135652
+        ],
+        "expected": [
+          276,
+          6135652
+        ],
+        "match": true
+      },
+      "glacier/test": {
+        "got": [
+          277,
+          6157250
+        ],
+        "expected": [
+          277,
+          6157250
+        ],
+        "match": true
+      },
+      "mountain/train": {
+        "got": [
+          200,
+          1950345
+        ],
+        "expected": [
+          200,
+          1950345
+        ],
+        "match": true
+      },
+      "mountain/validation": {
+        "got": [
+          262,
+          5789535
+        ],
+        "expected": [
+          262,
+          5789535
+        ],
+        "match": true
+      },
+      "mountain/test": {
+        "got": [
+          263,
+          5849765
+        ],
+        "expected": [
+          263,
+          5849765
+        ],
+        "match": true
+      },
+      "sea/train": {
+        "got": [
+          200,
+          1987613
+        ],
+        "expected": [
+          200,
+          1987613
+        ],
+        "match": true
+      },
+      "sea/validation": {
+        "got": [
+          255,
+          5655068
+        ],
+        "expected": [
+          255,
+          5655068
+        ],
+        "match": true
+      },
+      "sea/test": {
+        "got": [
+          255,
+          5668011
+        ],
+        "expected": [
+          255,
+          5668011
+        ],
+        "match": true
+      },
+      "street/train": {
+        "got": [
+          200,
+          1841817
+        ],
+        "expected": [
+          200,
+          1841817
+        ],
+        "match": true
+      },
+      "street/validation": {
+        "got": [
+          250,
+          5541845
+        ],
+        "expected": [
+          250,
+          5541845
+        ],
+        "match": true
+      },
+      "street/test": {
+        "got": [
+          251,
+          5547533
+        ],
+        "expected": [
+          251,
+          5547533
+        ],
+        "match": true
+      }
+    },
+    "totals": {
+      "train": [
+        1200,
+        11993084
+      ],
+      "validation": [
+        1498,
+        33236385
+      ],
+      "test": [
+        1502,
+        33351444
+      ]
+    },
+    "all_match": true,
+    "overlaps": {
+      "train&validation": 0,
+      "train&test": 0,
+      "validation&test": 0
+    },
+    "split_sha256": "d3a611aec41f6e335ab58287f10a443f3e0e35aa9adfefae662d48b15af567f9",
+    "n_images": 17034,
+    "n_not_150x150": 55,
+    "sizes": {
+      "150x150": 16979,
+      "150x113": 7,
+      "150x135": 3,
+      "150x111": 3,
+      "150x108": 2,
+      "150x136": 2,
+      "150x110": 2,
+      "150x149": 2,
+      "150x143": 2,
+      "150x146": 2,
+      "150x134": 2,
+      "150x142": 2,
+      "150x123": 2,
+      "150x76": 2,
+      "150x144": 2,
+      "150x141": 2,
+      "150x81": 2,
+      "150x131": 2,
+      "150x124": 1,
+      "150x133": 1,
+      "150x115": 1,
+      "150x105": 1,
+      "150x120": 1,
+      "150x119": 1,
+      "150x102": 1,
+      "150x97": 1,
+      "150x103": 1,
+      "150x100": 1,
+      "150x145": 1,
+      "150x147": 1,
+      "150x140": 1,
+      "150x72": 1
+    }
+  },
+  "batch_figure": "figures\\train_batch.png",
+  "initial_loss": {
+    "scratch": {
+      "L0": 2.1344404220581055,
+      "ln6": 1.791759469228055,
+      "diff": 0.3426809528300505,
+      "logit_std": 0.5041067004203796,
+      "logit_abs_max": 1.9371014833450317,
+      "mean_max_prob": 0.2856047749519348
+    },
+    "frozen": {
+      "L0": 2.215514898300171,
+      "ln6": 1.791759469228055,
+      "diff": 0.42375542907211594,
+      "logit_std": 0.6711766123771667,
+      "logit_abs_max": 2.2834975719451904,
+      "mean_max_prob": 0.3260469436645508
+    }
+  },
+  "params": {
+    "scratch": {
+      "total": 11179590,
+      "trainable": 11179590,
+      "groups": [
+        {
+          "n_params": 11179590,
+          "lr": 0.003,
+          "weight_decay": 0.0001
+        }
+      ],
+      "requires_grad_false_in_optimizer": 0,
+      "all_trainable_in_optimizer": true,
+      "match": true
+    },
+    "frozen": {
+      "total": 11179590,
+      "trainable": 3078,
+      "groups": [
+        {
+          "n_params": 3078,
+          "lr": 0.003,
+          "weight_decay": 0.0001
+        }
+      ],
+      "requires_grad_false_in_optimizer": 0,
+      "all_trainable_in_optimizer": true,
+      "match": true
+    },
+    "unfreeze": {
+      "total": 11179590,
+      "trainable": 8396806,
+      "groups": [
+        {
+          "n_params": 3078,
+          "lr": 0.003,
+          "weight_decay": 0.0001
+        },
+        {
+          "n_params": 8393728,
+          "lr": 0.0003,
+          "weight_decay": 0.0001
+        }
+      ],
+      "requires_grad_false_in_optimizer": 0,
+      "all_trainable_in_optimizer": true,
+      "match": true
+    }
+  },
+  "changes": {
+    "frozen": {
+      "rows": [
+        {
+          "module": "conv1",
+          "params_changed": false,
+          "bn_changed": null,
+          "expected_params_changed": false,
+          "expected_bn_changed": null,
+          "match": true
+        },
+        {
+          "module": "bn1",
+          "params_changed": false,
+          "bn_changed": false,
+          "expected_params_changed": false,
+          "expected_bn_changed": false,
+          "match": true
+        },
+        {
+          "module": "layer1",
+          "params_changed": false,
+          "bn_changed": false,
+          "expected_params_changed": false,
+          "expected_bn_changed": false,
+          "match": true
+        },
+        {
+          "module": "layer2",
+          "params_changed": false,
+          "bn_changed": false,
+          "expected_params_changed": false,
+          "expected_bn_changed": false,
+          "match": true
+        },
+        {
+          "module": "layer3",
+          "params_changed": false,
+          "bn_changed": false,
+          "expected_params_changed": false,
+          "expected_bn_changed": false,
+          "match": true
+        },
+        {
+          "module": "layer4",
+          "params_changed": false,
+          "bn_changed": false,
+          "expected_params_changed": false,
+          "expected_bn_changed": false,
+          "match": true
+        },
+        {
+          "module": "fc",
+          "params_changed": true,
+          "bn_changed": null,
+          "expected_params_changed": true,
+          "expected_bn_changed": null,
+          "match": true
+        }
+      ],
+      "layer1.0.bn1_max_abs_change": {
+        "layer1.0.bn1.running_mean": 0.0,
+        "layer1.0.bn1.running_var": 0.0,
+        "layer1.0.bn1.num_batches_tracked": 0.0
+      }
+    },
+    "unfreeze": {
+      "rows": [
+        {
+          "module": "conv1",
+          "params_changed": false,
+          "bn_changed": null,
+          "expected_params_changed": false,
+          "expected_bn_changed": null,
+          "match": true
+        },
+        {
+          "module": "bn1",
+          "params_changed": false,
+          "bn_changed": false,
+          "expected_params_changed": false,
+          "expected_bn_changed": false,
+          "match": true
+        },
+        {
+          "module": "layer1",
+          "params_changed": false,
+          "bn_changed": false,
+          "expected_params_changed": false,
+          "expected_bn_changed": false,
+          "match": true
+        },
+        {
+          "module": "layer2",
+          "params_changed": false,
+          "bn_changed": false,
+          "expected_params_changed": false,
+          "expected_bn_changed": false,
+          "match": true
+        },
+        {
+          "module": "layer3",
+          "params_changed": false,
+          "bn_changed": false,
+          "expected_params_changed": false,
+          "expected_bn_changed": false,
+          "match": true
+        },
+        {
+          "module": "layer4",
+          "params_changed": true,
+          "bn_changed": true,
+          "expected_params_changed": true,
+          "expected_bn_changed": true,
+          "match": true
+        },
+        {
+          "module": "fc",
+          "params_changed": true,
+          "bn_changed": null,
+          "expected_params_changed": true,
+          "expected_bn_changed": null,
+          "match": true
+        }
+      ],
+      "layer1.0.bn1_max_abs_change": {
+        "layer1.0.bn1.running_mean": 0.0,
+        "layer1.0.bn1.running_var": 0.0,
+        "layer1.0.bn1.num_batches_tracked": 0.0
+      }
+    }
+  },
+  "bn_bug": {
+    "rows": [
+      {
+        "module": "conv1",
+        "params_changed": false,
+        "bn_changed": null,
+        "expected_params_changed": false,
+        "expected_bn_changed": null,
+        "match": true
+      },
+      {
+        "module": "bn1",
+        "params_changed": false,
+        "bn_changed": true,
+        "expected_params_changed": false,
+        "expected_bn_changed": false,
+        "match": false
+      },
+      {
+        "module": "layer1",
+        "params_changed": false,
+        "bn_changed": true,
+        "expected_params_changed": false,
+        "expected_bn_changed": false,
+        "match": false
+      },
+      {
+        "module": "layer2",
+        "params_changed": false,
+        "bn_changed": true,
+        "expected_params_changed": false,
+        "expected_bn_changed": false,
+        "match": false
+      },
+      {
+        "module": "layer3",
+        "params_changed": false,
+        "bn_changed": true,
+        "expected_params_changed": false,
+        "expected_bn_changed": false,
+        "match": false
+      },
+      {
+        "module": "layer4",
+        "params_changed": false,
+        "bn_changed": true,
+        "expected_params_changed": false,
+        "expected_bn_changed": false,
+        "match": false
+      },
+      {
+        "module": "fc",
+        "params_changed": true,
+        "bn_changed": null,
+        "expected_params_changed": true,
+        "expected_bn_changed": null,
+        "match": true
+      }
+    ],
+    "layer1.0.bn1_max_abs_change": {
+      "layer1.0.bn1.running_mean": 0.08858203887939453,
+      "layer1.0.bn1.running_var": 0.14839696884155273,
+      "layer1.0.bn1.num_batches_tracked": 5.0
+    }
+  },
+  "environment": {
+    "python": "3.12.14",
+    "torch": "2.14.0+cpu",
+    "torchvision": "0.29.0+cpu",
+    "numpy": "2.5.3",
+    "device": "cpu",
+    "device_name": "cpu (Intel64 Family 6 Model 186 Stepping 2, GenuineIntel, 8 threads)",
+    "platform": "Windows-11-10.0.26300-SP0"
+  }
+}

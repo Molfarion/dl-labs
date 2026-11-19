@@ -1,0 +1,159 @@
+{
+  "seed": 1,
+  "regime": "scratch",
+  "transforms": {
+    "train": "Compose(\n    RandomResizedCrop(size=(160, 160), scale=(0.7, 1.0), ratio=(0.75, 1.3333), interpolation=bilinear, antialias=True)\n    RandomHorizontalFlip(p=0.5)\n    ToTensor()\n    Normalize(mean=(0.485, 0.456, 0.406), std=(0.229, 0.224, 0.225))\n)",
+    "eval": "Compose(\n    Resize(size=(160, 160), interpolation=bilinear, max_size=None, antialias=True)\n    ToTensor()\n    Normalize(mean=(0.485, 0.456, 0.406), std=(0.229, 0.224, 0.225))\n)",
+    "img_size": 160,
+    "mean": [
+      0.485,
+      0.456,
+      0.406
+    ],
+    "std": [
+      0.229,
+      0.224,
+      0.225
+    ],
+    "image_open": "PIL.Image.open(path).convert(\"RGB\")",
+    "test_time_augmentation": false
+  },
+  "model": {
+    "arch": "torchvision.models.resnet18",
+    "weights": null,
+    "fc": "torch.nn.Linear(512, 6), стандартна ініціалізація",
+    "trainable_modules": [
+      "conv1",
+      "bn1",
+      "layer1",
+      "layer2",
+      "layer3",
+      "layer4",
+      "fc"
+    ],
+    "eval_modules_during_training": [],
+    "batchnorm": {
+      "momentum": 0.1,
+      "eps": 1e-05
+    },
+    "dtype": "float32"
+  },
+  "optimizer": {
+    "class": "torch.optim.AdamW",
+    "param_groups": [
+      {
+        "lr": 0.003,
+        "betas": [
+          0.9,
+          0.999
+        ],
+        "eps": 1e-08,
+        "weight_decay": 0.0001,
+        "amsgrad": false,
+        "maximize": false,
+        "foreach": null,
+        "capturable": false,
+        "differentiable": false,
+        "fused": null,
+        "decoupled_weight_decay": true,
+        "n_params": 11179590
+      }
+    ]
+  },
+  "training": {
+    "epochs": 8,
+    "steps_per_epoch": 38,
+    "total_steps": 304,
+    "train_loader": {
+      "batch_size": 32,
+      "shuffle": true,
+      "drop_last": false,
+      "num_workers": 0,
+      "generator": null,
+      "sampler": null
+    },
+    "eval_loader": {
+      "batch_size": 64,
+      "shuffle": false,
+      "num_workers": 0
+    },
+    "loss": "torch.nn.CrossEntropyLoss(reduction='mean')",
+    "epoch_loss": "sum_b L_b*|b| / 1200 (L_b до кроку оптимізатора)",
+    "metric": "sklearn.metrics.f1_score(average='macro') на validation після кожної епохи",
+    "lr_schedule": null,
+    "grad_clipping": null,
+    "mixed_precision": false,
+    "label_smoothing": 0.0,
+    "class_weights": null,
+    "early_stopping": false,
+    "checkpoint_selection": "ваги після 8-ї епохи"
+  },
+  "git": {
+    "commit": "07c2cfef6aa3129b64a0e32d7437dd4fd0027a46",
+    "uncommitted_changes": true,
+    "uncommitted_files": [
+      "M pyproject.toml",
+      " M uv.lock",
+      "?? lab3/analysis.py",
+      "?? lab3/common.py",
+      "?? lab3/train.py"
+    ],
+    "code_sha256": {
+      "lab3/common.py": "8dd0767a7fb287a4705a7ad3b270c93e03beef43a8129f3148a4f0fe5211f0cb",
+      "lab3/train.py": "3eae01d060365a5158d78dfdcaa28a8b30dff4f23f7419349fce4fcc328116c0",
+      "lab3/analysis.py": "744c0f975b4fc7edb538974462e7869a275d68c8fce6750f1d7ff05e1e144ded",
+      "pyproject.toml": "97c292afbf1a7f068eefa0982ae0927a502d32cac7edf3d01f7e735e36908e1f",
+      "uv.lock": "a6c64fa593ab5781ef817f234437b0e727996d5493baf1d836d6cc66eed6490a"
+    }
+  },
+  "split_csv_sha256": "d3a611aec41f6e335ab58287f10a443f3e0e35aa9adfefae662d48b15af567f9",
+  "environment": {
+    "python": "3.12.14",
+    "torch": "2.14.0+cpu",
+    "torchvision": "0.29.0+cpu",
+    "numpy": "2.5.3",
+    "device": "cpu",
+    "device_name": "cpu (Intel64 Family 6 Model 186 Stepping 2, GenuineIntel, 8 threads)",
+    "platform": "Windows-11-10.0.26300-SP0"
+  },
+  "train_loss": [
+    1.7167934878667195,
+    1.2439807256062825,
+    1.1667457501093546,
+    1.126800675392151,
+    1.1052701981862385,
+    1.1068118166923524,
+    1.040621649424235,
+    0.986871353785197
+  ],
+  "val_macro_f1": [
+    0.28188357328835195,
+    0.449232536304431,
+    0.5221192066159661,
+    0.5504445321556412,
+    0.4569410937387628,
+    0.46810135777220135,
+    0.5729205516627314,
+    0.5955374872414576
+  ],
+  "optimizer_steps": 304,
+  "epoch_seconds": [
+    71.87268689996563,
+    70.93058789998759,
+    68.78376449993812,
+    61.22357400006149,
+    61.78285349998623,
+    69.81573210004717,
+    63.978061500005424,
+    61.66087929997593
+  ],
+  "train_time_seconds": 530.0487907999195,
+  "train_time_note": "навчання й оцінка validation після кожної епохи, 8 епох",
+  "val_logits": {
+    "file": "val_logits.npy",
+    "shape": [
+      1498,
+      6
+    ]
+  }
+}

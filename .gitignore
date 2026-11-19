@@ -11,3 +11,6 @@ wheels/
 
 # Lab 2 data
 creditcard.csv
+
+# Lab 3: weights of individual runs stay local (only lab3_model.pt is committed)
+lab3/runs/*/model.pt
