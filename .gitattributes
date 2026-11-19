@@ -1,0 +1,2 @@
+# split.csv is hashed (SHA-256) in lab3 run logs: keep its bytes exactly as committed
+lab3/split.csv -text
